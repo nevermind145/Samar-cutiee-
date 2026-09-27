@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Samar ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #fff0f5;
+    color: #754b60;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 35px 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    animation: appear 0.7s ease;
+}
+
+.page.active {
+    display: flex;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1, h2 {
+    font-family: 'Pacifico', cursive;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: clamp(30px, 8vw, 45px);
+}
+
+h2 {
+    font-size: clamp(24px, 6vw, 34px);
+}
+
+p {
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.card {
+    background: rgba(255,255,255,0.88);
+    border: 2px solid #ffe0eb;
+    border-radius: 28px;
+    padding: 28px 23px;
+    width: min(100%, 440px);
+    box-shadow: 0 12px 35px #e9a8c333;
+    position: relative;
+    z-index: 2;
+}
+
+.btn {
+    border: none;
+    background: #f49abc;
+    color: white;
+    padding: 13px 27px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 10px;
+    box-shadow: 0 5px 12px #e9a0bf66;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.06);
+}
+
+.btn.secondary {
+    background: white;
+    color: #d66d98;
+    border: 2px solid #f4a6c4;
+}
+
+.small {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* FLOATING HEARTS */
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    animation: floatUp 7s linear forwards;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.65;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(40deg);
+        opacity: 0;
+    }
+}
+
+/* GIFT BOX */
+
+.gift {
+    font-size: 120px;
+    cursor: pointer;
+    display: inline-block;
+    animation: giftWiggle 1.5s infinite;
+    filter: drop-shadow(0 8px 7px #bc718044);
+}
+
+@keyframes giftWiggle {
+    0%, 100% {
+        transform: rotate(0) scale(1);
+    }
+    25% {
+        transform: rotate(-7deg) scale(1.04);
+    }
+    75% {
+        transform: rotate(7deg) scale(1.04);
+    }
+}
+
+/* SPARKLES */
+
+.sparkle {
+    display: inline-block;
+    animation: sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+    from {
+        transform: scale(0.7) rotate(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(1.3) rotate(25deg);
+        opacity: 1;
+    }
+}
+
+/* FLOWER GARDEN */
+
+.garden {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+    width: min(100%, 440px);
+    margin: 15px auto;
+}
+
+.flower {
+    background: #fff;
+    border: 2px solid #f9d6e4;
+    border-radius: 20px;
+    padding: 16px 8px;
+    box-shadow: 0 5px 12px #dba5bb33;
+    transition: 0.3s;
+}
+
+.flower:active {
+    transform: scale(0.94);
+}
+
+.flower span {
+    display: block;
+    font-size: 48px;
+    animation: bloom 2s ease-in-out infinite alternate;
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(0.9) rotate(-5deg);
+    }
+    to {
+        transform: scale(1.08) rotate(5deg);
+    }
+}
+
+.flower strong {
+    display: block;
+    margin-top: 8px;
+}
+
+/* MESSAGE CARDS */
+
+.message {
+    background: #fff;
+    border-radius: 20px;
+    padding: 18px;
+    margin: 12px 0;
+    box-shadow: 0 5px 15px #d99ab533;
+    animation: appear 0.6s ease;
+}
+
+/* ENVELOPE */
+
+.envelope {
+    font-size: 100px;
+    cursor: pointer;
+    animation: giftWiggle 2s infinite;
+}
+
+.letter {
+    background: #fffaf0;
+    border: 1px solid #f3d9a8;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    line-height: 1.9;
+    box-shadow: 0 5px 20px #b88a5033;
+    white-space: pre-line;
+}
+
+/* QUESTION BUTTONS */
+
+.choice-area {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 150px;
+    margin: 15px auto;
+}
+
+#noBtn {
+    position: absolute;
+    left: 58%;
+    top: 20px;
+    transition: left 0.2s, top 0.2s;
+}
+
+#yesBtn {
+    position: absolute;
+    left: 15%;
+    top: 20px;
+}
+
+/* CONFETTI */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    font-size: 25px;
+    animation: confettiFall 4s linear forwards;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(700deg);
+        opacity: 0;
+    }
+}
+
+/* PROGRESS BAR */
+
+.progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: #ee8db3;
+    width: 0;
+    z-index: 20;
+    transition: width 0.5s;
+}
+
+/* FINAL HEART */
+
+.final-heart {
+    font-size: 75px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@media(max-width: 380px) {
+    .card {
+        padding: 22px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- PAGE 1: GIFT -->
+
+<section class="page active" id="page1">
+    <div class="card">
+        <p>♡ A LITTLE SURPRISE ♡</p>
+
+        <h1>Hey, Samar! 💗</h1>
+
+        <div class="sparkle">✨</div>
+
+        <p>Someone has prepared a little something just for you!</p>
+        <p>Are you ready to open it?</p>
+
+        <div class="gift" onclick="openGift()">🎁</div>
+
+        <p class="small">Tap the gift to open ♡</p>
+    </div>
+</section>
+
+
+<!-- PAGE 2: WELCOME -->
+
+<section class="page" id="page2">
+    <div class="card">
+        <p>♡ WELCOME TO OUR LITTLE WORLD ♡</p>
+
+        <div style="font-size:65px; animation:giftWiggle 2s infinite;">
+            💝
+        </div>
+
+        <h1>Hiiii, handsome!</h1>
+
+        <p>
+            Out of all the people in this big world,
+            I somehow found someone who became
+            so special to me.
+        </p>
+
+        <p>And that someone is YOU! 🥹💕</p>
+
+        <div class="sparkle">✨ ♡ ✨</div>
+
+        <button class="btn" onclick="nextPage(3)">
+            Let's explore ♡
+        </button>
+    </div>
+</section>
+
+
+<!-- PAGE 3: FLOWER GARDEN -->
+
+<section class="page" id="page3">
+    <div class="card">
+
+        <p>♡ A LITTLE GARDEN FOR YOU ♡</p>
+
+        <h2>Flowers & wishes 🌷</h2>
+
+        <p>
+            Tap each flower to discover
+            a little wish!
+        </p>
+
+        <div class="garden">
+
+            <button class="flower"
+            onclick="flowerWish('Marigold 🌼',
+            'May your life always be filled with happiness, warmth and beautiful moments.')">
+                <span>🌼</span>
+                <strong>Marigold</strong>
+            </button>
+
+            <button class="flower"
+            onclick="flowerWish('Hibiscus 🌺',
+            'May you always find peace, love and reasons to smile.')">
+                <span>🌺</span>
+                <strong>Hibiscus</strong>
+            </button>
+
+            <button class="flower"
+            onclick="flowerWish('Tulip 🌷',
+            'May every new day bring you something wonderful.')">
+                <span>🌷</span>
+                <strong>Tulip</strong>
+            </button>
+
+            <button class="flower"
+            onclick="flowerWish('Sunflower 🌻',
+            'May you always shine and find happiness wherever you go.')">
+                <span>🌻</span>
+                <strong>Sunflower</strong>
+            </button>
+
+        </div>
+
+        <div id="flowerMessage"
+        class="message" style="display:none"></div>
+
+        <button class="btn" onclick="nextPage(4)">
+            Next surprise ♡
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 4: LITTLE MESSAGES -->
+
+<section class="page" id="page4">
+    <div class="card">
+
+        <p>♡ A FEW THINGS FROM MY HEART ♡</p>
+
+        <div style="font-size:65px; animation:heartbeat 1.5s infinite;">
+            💗
+        </div>
+
+        <h2>Things I want you to know</h2>
+
+        <div class="message">
+            💗 I'm so happy that you're in my life.
+        </div>
+
+        <div class="message">
+            🥹 I know I have done many mistakes
+            and bahut gadbad, but I am grateful
+            ki aapne meko ek aur chance di.
+        </div>
+
+        <div class="message">
+            💕 You are the most perfect person
+            I could ever get.
+        </div>
+
+        <div class="message">
+            🌷 I really am lucky ki aap ho
+            meri life mein.
+        </div>
+
+        <button class="btn" onclick="nextPage(5)">
+            Read my letter 💌
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 5: LETTER -->
+
+<section class="page" id="page5">
+    <div class="card">
+
+        <p>♡ A LETTER JUST FOR YOU ♡</p>
+
+        <h2>My handsome Samar 💌</h2>
+
+        <div class="envelope"
+        onclick="showLetter()" id="envelope">
+            💌
+        </div>
+
+        <p id="letterHint">
+            Tap the envelope to open your letter.
+        </p>
+
+        <div class="letter" id="letterText"
+        style="display:none">
+
+Baccha, main bahut khush hun that you are in my life. 💗
+
+I know I have done many mistakes and bahut gabad, but I am grateful ki aapne meko ek aur chance di.
+
+You are the most perfect person I could ever get. I really am lucky that aap ho mere life mein.
+
+Is baar main tumse pyaar karna seekhna chahti hun, and I would love to do that. 🥹
+
+Always gonna be my Mr. Handsome. I hope ki hamesha aap khush rho and be successful and stress-free. Aapki life mein hamesha good things rhe. 🌷
+
+I know we haven't met each other in real life and ham online long distance hai, par just know you are important to me.
+
+Aapse pehle mili thi on this date, not sure if u remember it was on 15 of Feb. Bahut unexpected that hamara first meet, not as romantic, but maybe universe has its way as u always said.
+
+Aap mere liye bahut special ho. 💕
+
+<br><br>
+<strong>Always yours,<br>Never ♡</strong>
+
+        </div>
+
+        <button class="btn" onclick="nextPage(6)">
+            One more thing! ♡
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 6: THE QUESTION -->
+
+<section class="page" id="page6">
+    <div class="card">
+
+        <p>♡ ONE LITTLE QUESTION ♡</p>
+
+        <div style="font-size:75px; animation:heartbeat 1.5s infinite;">
+            💗
+        </div>
+
+        <h2>
+            Will you stay my favourite
+            person forever? 🥹💕
+        </h2>
+
+        <p>Choose carefully, handsome! Hehe.</p>
+
+        <div class="choice-area">
+
+            <button class="btn" id="yesBtn"
+            onclick="nextPage(7)">
+                YES! 💗
+            </button>
+
+            <button class="btn secondary" id="noBtn"
+            onmouseover="runAway()"
+            ontouchstart="runAway()"
+            onclick="runAway()">
+                NO 🙃
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PAGE 7: CELEBRATION -->
+
+<section class="page" id="page7">
+    <div class="card">
+
+        <p>♡ YAYYYYY! ♡</p>
+
+        <div style="font-size:80px; animation:giftWiggle 1s infinite;">
+            🎉
+        </div>
+
+        <h1>YOU SAID YES! 💗</h1>
+
+        <p>
+            Look at all these hearts celebrating
+            with us!
+        </p>
+
+        <p>
+            Sending you a million virtual hugs
+            and kisses! 🥹💕
+        </p>
+
+        <div class="sparkle">✨ 💖 ✨</div>
+
+        <button class="btn"
+        onclick="nextPage(8)">
+            Continue ♡
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 8: FEBRUARY 15 -->
+
+<section class="page" id="page8">
+    <div class="card">
+
+        <p>♡ A SPECIAL LITTLE MEMORY ♡</p>
+
+        <div style="font-size:65px; animation:heartbeat 1.5s infinite;">
+            💌
+        </div>
+
+        <h2>15 February ♡</h2>
+
+        <div class="message">
+
+            <p>
+                Aapse pehle mili thi on this date,
+                not sure if u remember it was on
+                15 of Feb.
+            </p>
+
+            <p>
+                Bahut unexpected that hamara
+                first meet, not as romantic,
+                but maybe universe has its way
+                as u always said.
+            </p>
+
+            <p>
+                Aap mere liye bahut special ho. 💗
+            </p>
+
+        </div>
+
+        <p>
+            Even with all the distance,
+            I'm glad our paths crossed. ✨
+        </p>
+
+        <button class="btn" onclick="nextPage(9)">
+            Final surprise 🎁
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 9: FINAL SURPRISE -->
+
+<section class="page" id="page9">
+    <div class="card">
+
+        <p>♡ JUST FOR YOU ♡</p>
+
+        <div class="final-heart">💗</div>
+
+        <h1>Happy Boyfriend's Day!</h1>
+
+        <div class="message">
+
+            <p>
+                No matter how far apart we are,
+                I'm glad you're a part of my life.
+            </p>
+
+            <p>
+                I hope your days are filled
+                with happiness, peace, success
+                and all the beautiful things
+                you deserve.
+            </p>
+
+            <p>
+                Thank you for being YOU. 🥹💕
+            </p>
+
+        </div>
+
+        <div style="font-size:45px;">
+            🌷 🌼 🌺
+        </div>
+
+        <h2>With love,</h2>
+
+        <h1>Never ♡</h1>
+
+        <p class="small">
+            Made with lots of love just for Samar.
+        </p>
+
+        <button class="btn" onclick="restart()">
+            Replay our little world ↻
+        </button>
+
+    </div>
+</section>
+
+
+<script>
+
+let currentPage = 1;
+
+function nextPage(number) {
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    document.getElementById('page' + number)
+        .classList.add('active');
+
+    currentPage = number;
+
+    document.getElementById('progress').style.width =
+        (number / 9 * 100) + '%';
+
+    window.scrollTo(0, 0);
+
+    if (number === 7) {
+        celebrate();
+    }
+}
+
+function openGift() {
+    nextPage(2);
+}
+
+function flowerWish(name, wish) {
+
+    const box = document.getElementById('flowerMessage');
+
+    box.style.display = 'block';
+
+    box.innerHTML =
+        '<strong>' + name + '</strong><br><br>' +
+        wish + '<br><br>💗';
+}
+
+function showLetter() {
+
+    document.getElementById('letterText').style.display =
+        'block';
+
+    document.getElementById('letterHint').style.display =
+        'none';
+
+    document.getElementById('envelope').style.display =
+        'none';
+}
+
+function runAway() {
+
+    const button = document.getElementById('noBtn');
+    const area = document.querySelector('.choice-area');
+
+    const maxX = Math.max(
+        0, area.clientWidth - button.offsetWidth
+    );
+
+    const maxY = Math.max(
+        0, area.clientHeight - button.offsetHeight
+    );
+
+    button.style.left = Math.random() * maxX + 'px';
+    button.style.top = Math.random() * maxY + 'px';
+}
+
+function celebrate() {
+
+    const symbols = [
+        '💗', '💕', '🌸', '✨', '💖', '🌷', '🌼'
+    ];
+
+    for (let i = 0; i < 40; i++) {
+
+        const item = document.createElement('div');
+
+        item.className = 'confetti';
+
+        item.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        item.style.left = Math.random() * 100 + 'vw';
+
+        item.style.animationDelay =
+            Math.random() * 2 + 's';
+
+        document.body.appendChild(item);
+
+        setTimeout(() => item.remove(), 6000);
+    }
+}
+
+function restart() {
+
+    document.getElementById('noBtn').style.left = '58%';
+    document.getElementById('noBtn').style.top = '20px';
+
+    document.getElementById('letterText').style.display = 'none';
+    document.getElementById('letterHint').style.display = 'block';
+    document.getElementById('envelope').style.display = 'block';
+
+    document.getElementById('flowerMessage').style.display = 'none';
+
+    nextPage(1);
+}
+
+function floatingHearts() {
+
+    const heart = document.createElement('div');
+
+    heart.className = 'heart';
+
+    heart.textContent = [
+        '♡', '💗', '💕', '🌸', '✨'
+    ][Math.floor(Math.random() * 5)];
+
+    heart.style.left = Math.random() * 100 + 'vw';
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + 'px';
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(floatingHearts, 650);
+
+</script>
+
+</body>
+  </html>
